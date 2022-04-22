@@ -1,8 +1,9 @@
 import {View, TextInput, StyleSheet, Alert} from 'react-native';
 import React, {useState} from 'react';
 import PrimaryButton from '../components/PrimaryButton';
+import Colors from '../constants/colors';
 
-function StartGameScreen() {
+function StartGameScreen({onPickNumber}) {
   const [inputNumber, setInputNumber] = useState('');
 
   function resetInputButton() {
@@ -20,6 +21,8 @@ function StartGameScreen() {
         return;
     }
     console.log(`Input number is ${myChosenNumber}`);
+    onPickNumber(myChosenNumber);
+    
   }
 
   function rangeInputHandler(inputNumber) {
@@ -52,7 +55,7 @@ const styles = StyleSheet.create({
     padding: 16,
     marginHorizontal: 25,
     borderRadius: 10,
-    backgroundColor: '#82064d',
+    backgroundColor: Colors.backgroundColor,
     elevation: 4,
     shadowColor: 'black',
     shadowOffset: {width: 0, height: 5},
